@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Surya S — Digital Marketing Strategist & AI Automation Expert</title>
+<meta name="description" content="Surya S — Digital Marketing Strategist, SEO Consultant, AI Automation Expert, and Founder of AKOON IGNITE & GetWy. Helping brands scale through data-driven marketing and intelligent automation.">
+
+<!-- Google Fonts (Modern Luxury & Clean Tech Typography Blend: Outfit + Plus Jakarta Sans + JetBrains Mono) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger for 60fps animations (Clean Anonymous CDN Loading) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --bg:#090D10;
+  --bg-2:#11171C;
+  --bg-3:#182026;
+  --line:#1F2A32;
+  --line-soft:#162026;
+  --dim:#8B9AA3;
+  --text:#E8EDEF;
+  --accent:#E8A33D;
+  --accent-glow:rgba(232, 163, 61, 0.25);
+  --pos:#7FC9A9;
+  --cyan:#4FD1C5;
+  --purple:#A78BFA;
+
+  /* ULTRA-MODERN TYPOGRAPHY SYSTEM */
+  --font-display: "Outfit", -apple-system, sans-serif;          /* Modern, sleek, high-impact display headlines */
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;       /* Ultra-clean, premium readable prose */
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;        /* Sharp, high-tech metrics & code labels */
+
+  --gut:clamp(20px,5vw,56px);
+  --pad:clamp(80px,11vw,150px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-body);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ============================================================
+   INTRO / PRELOADER SCREEN ("DIGITAL MARKETING MANAGER")
+============================================================ */
+#preloader{
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background:#06080A;z-index:99999;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;overflow:hidden;
+}
+.loader-content{
+  max-width:540px;width:100%;text-align:center;position:relative;
+}
+.loader-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,163,61,0.1);border:1px solid rgba(232,163,61,0.3);
+  padding:6px 14px;border-radius:50px;font-family:var(--font-mono);
+  font-size:10.5px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.loader-name{
+  font-family:var(--font-display);font-size:clamp(32px,5vw,48px);font-weight:800;
+  color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;
+}
+.loader-name span{
+  background:linear-gradient(135deg, #E8A33D, #F2C94C);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.loader-role-slider{
+  height:36px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.loader-single-role{
+  font-family:var(--font-mono);
+  font-size:clamp(12px, 3.2vw, 15px);
+  color:var(--pos);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:opacity 0.3s ease, transform 0.3s ease;
+  white-space:nowrap;
+}
+.loader-single-role.switching{
+  opacity:0;
+  transform:translateY(6px);
+}
+
+.loader-bar-frame{
+  width:100%;height:4px;background:#162026;border-radius:4px;
+  overflow:hidden;position:relative;margin-bottom:14px;
+}
+.loader-bar-fill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg, var(--accent), var(--pos), var(--cyan));
+  border-radius:4px;transition:width 0.15s ease-out;
+  box-shadow:0 0 12px rgba(232,163,61,0.8);
+}
+.loader-footer-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-mono);font-size:11px;color:var(--dim);letter-spacing:.08em;
+}
+
+/* Canvas Particle Grid Background */
+#bg-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;opacity:0.45;
+}
+
+/* Custom Interactive Cursor */
+#custom-cursor{
+  position:fixed;width:8px;height:8px;background:var(--accent);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%, -50%);
+  transition:transform 0.08s ease-out, background-color 0.2s, width 0.2s, height 0.2s;
+  mix-blend-mode:difference;
+}
+#cursor-follower{
+  position:fixed;width:36px;height:36px;border:1px solid rgba(232,163,61,0.4);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transform:translate(-50%, -50%);
+  transition:transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s, width 0.2s, height 0.2s;
+}
+body.hovered #custom-cursor{
+  width:16px;height:16px;background:var(--pos);
+}
+body.hovered #cursor-follower{
+  width:54px;height:54px;border-color:var(--accent);
+  background:rgba(232,163,61,0.06);
+}
+@media(max-width:900px){#custom-cursor,#cursor-follower{display:none!important}}
+
+/* Scroll Progress Bar */
+#scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg, var(--accent), var(--pos), var(--cyan));
+  z-index:1001;transition:width 0.1s linear;
+}
+
+/* Desktop Full-Screen Scaling Container */
+.wrap{
+  max-width:1440px;
+  width:100%;
+  margin:0 auto;
+  padding-inline:clamp(20px, 4vw, 72px);
+  position:relative;
+  z-index:2;
+}
+
+.mono{
+  font-family:var(--font-mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+}
+.disp{
+  font-family:var(--font-display);font-weight:700;
+  letter-spacing:-.025em;line-height:1.08;
+}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(9,13,16,0.85);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line-soft);
+  transition:transform 0.3s ease;
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{
+  font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;display:flex;align-items:center;gap:8px;
+}
+.brand .brand-avatar{
+  width:26px;height:26px;border-radius:50%;background:var(--accent);
+  color:#111;display:grid;place-items:center;font-weight:700;font-size:12px;
+}
+.brand b{color:var(--accent);font-weight:600}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);transition:color .2s, transform .2s;display:inline-block;
+}
+.nav-links a:hover{color:var(--text);transform:translateY(-1px)}
+.nav-cta{
+  border:1px solid var(--line);border-radius:2px;
+  padding:8px 16px;color:var(--text)!important;background:var(--bg-2);
+  transition:border-color .2s,background .2s,transform .2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.nav-cta:hover{border-color:var(--accent);background:var(--accent-glow);transform:translateY(-2px)}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- HERO ---------- */
+.hero{padding-block:clamp(60px,10vw,110px) clamp(44px,6vw,76px)}
+.eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--pos);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.2)}}
+h1{font-size:clamp(38px,6.6vw,84px);max-width:17ch}
+h1 em{font-style:normal;color:var(--accent);background:linear-gradient(135deg, #E8A33D 0%, #f4cb89 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{
+  margin-top:22px;max-width:58ch;font-size:clamp(16px,1.6vw,19px);
+  color:var(--dim);line-height:1.64;
+}
+.hero-ventures{
+  display:flex;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap;
+}
+.venture-chip{
+  font-family:var(--font-mono);font-size:11px;color:var(--text);background:var(--bg-2);
+  border:1px solid var(--line);padding:6px 14px;border-radius:20px;
+  transition:border-color .2s,transform .2s;
+}
+.venture-chip:hover{border-color:var(--accent);transform:translateY(-1px)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:14px 24px;border-radius:12px;border:1px solid var(--line);
+  transition:transform .2s,border-color .2s,background .2s,box-shadow .2s;
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#11161A;font-weight:600}
+.btn-primary:hover{transform:translateY(-3px);background:#f2b155;border-color:#f2b155;box-shadow:0 8px 24px rgba(232,163,61,0.35)}
+.btn-ghost{color:var(--text);background:var(--bg-2)}
+.btn-ghost:hover{border-color:var(--dim);transform:translateY(-3px);background:var(--bg-3)}
+
+/* ---------- SIGNATURE A/B PANEL ---------- */
+.exp{
+  margin-top:48px;border:1px solid var(--line);border-radius:14px;
+  background:var(--bg-2);box-shadow:0 12px 30px rgba(0,0,0,0.3);overflow:hidden;
+}
+.exp-top{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:12px 18px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap;
+}
+.exp-id{display:flex;align-items:center;gap:9px}
+.switch{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.switch button{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  background:none;border:0;color:var(--dim);padding:7px 20px;cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.switch button[aria-pressed="true"]{background:var(--accent);color:#11161A;font-weight:600}
+.exp-body{padding:18px 20px;display:flex;gap:28px;flex-wrap:wrap}
+.exp-stat{display:flex;flex-direction:column;gap:4px}
+.exp-stat .v{font-family:var(--font-mono);font-size:15px;color:var(--text);letter-spacing:0;font-weight:600}
+.exp-stat .v.up{color:var(--pos)}
+.exp-note{margin-top:14px;font-family:var(--font-mono);font-size:11px;color:var(--dim);letter-spacing:.04em}
+
+/* ---------- MARQUEE OF BRANDS ---------- */
+.marquee-wrap{
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+  padding-block:18px;overflow:hidden;background:var(--bg);position:relative;
+  mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track{
+  display:flex;gap:48px;width:max-content;animation:marquee 28s linear infinite;
+}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
+.marquee-item{
+  font-family:var(--font-mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:#5B6B75;display:inline-flex;align-items:center;gap:10px;transition:color .2s;white-space:nowrap;
+}
+.marquee-item:hover{color:var(--text)}
+.marquee-item::after{content:'·';margin-left:36px;color:var(--line)}
+
+/* ---------- SECTION HEADINGS ---------- */
+.sec{border-top:1px solid var(--line);padding-block:var(--pad);position:relative}
+.sec-head{margin-bottom:clamp(38px,5.5vw,64px)}
+.sec-head h2{font-size:clamp(28px,4.2vw,48px);margin-top:14px;max-width:24ch}
+.sec-head p{color:var(--dim);margin-top:14px;max-width:54ch;font-size:16.5px}
+
+/* ---------- ABOUT WITH PORTRAIT ---------- */
+.about-grid{
+  display:grid;grid-template-columns:370px 1fr;gap:clamp(28px,4.5vw,60px);
+  align-items:center;
+}
+.about-portrait-card{
+  border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  background:var(--bg-2);position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+  transition:transform .3s, border-color .3s;
+}
+.about-portrait-card:hover{
+  border-color:var(--accent);transform:translateY(-4px);
+}
+.about-portrait-card img{
+  width:100%;height:auto;display:block;object-fit:cover;border-radius:18px 18px 0 0;
+}
+.about-portrait-meta{
+  padding:16px 20px;background:var(--bg-2);border-top:1px solid var(--line-soft);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.about-portrait-meta h4{font-family:var(--font-display);font-size:18px;font-weight:700}
+.about-portrait-meta span{font-family:var(--font-mono);font-size:11px;color:var(--pos)}
+
+.about-body p{color:var(--dim);margin-bottom:18px;font-size:16px;line-height:1.75}
+.about-body p strong{color:var(--text);font-weight:600}
+.about-pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.about-pills span{
+  font-family:var(--font-mono);font-size:11.5px;color:var(--text);border:1px solid var(--line);
+  background:var(--bg-2);padding:7px 16px;border-radius:20px;transition:border-color .2s;
+}
+.about-pills span:hover{border-color:var(--accent)}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* ---------- TIMELINE ---------- */
+.timeline{display:grid;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+.time-row{
+  display:grid;grid-template-columns:130px 210px 1fr;gap:20px;
+  background:var(--bg);padding:24px 28px;transition:background .25s;
+}
+.time-row:hover{background:var(--bg-2)}
+.time-year{font-family:var(--font-mono);font-size:12px;color:var(--accent);font-weight:600}
+.time-role{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text)}
+.time-role small{display:block;font-family:var(--font-mono);font-size:11px;color:#6A7881;margin-top:3px;font-weight:400}
+.time-desc{color:var(--dim);font-size:15px}
+@media(max-width:760px){.time-row{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- WORK / CASES & POPUP TRIGGERS ---------- */
+.case{
+  display:grid;grid-template-columns:220px 1fr;gap:clamp(24px,4vw,56px);
+  padding-block:clamp(38px,5vw,56px);border-top:1px solid var(--line-soft);
+  position:relative;transition:background .2s;
+}
+.case:first-of-type{border-top:0;padding-top:0}
+.case-meta{display:flex;flex-direction:column;gap:8px}
+.case-meta .client{font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text)}
+.case h3{
+  font-family:var(--font-display);font-weight:800;font-variation-settings:"wdth" 110;
+  letter-spacing:-.025em;font-size:clamp(21px,2.5vw,28px);line-height:1.2;max-width:24ch;
+}
+.case p{color:var(--dim);margin-top:16px;max-width:58ch;font-size:15.5px}
+.metrics{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line-soft);border:1px solid var(--line-soft);margin-top:26px;
+  border-radius:12px;overflow:hidden;
+}
+.metric{background:var(--bg);padding:18px 16px;transition:background .2s}
+.metric:hover{background:var(--bg-2)}
+.metric .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#5F6E77}
+.metric .n{
+  font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.3vw,26px);
+  letter-spacing:-.02em;margin-top:8px;color:var(--text);
+}
+.metric .d{font-family:var(--font-mono);font-size:11px;color:var(--pos);margin-top:4px}
+.case-actions{display:flex;align-items:center;gap:14px;margin-top:22px}
+.btn-case-popup{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 16px;border:1px solid var(--line);background:var(--bg-2);color:var(--accent);
+  border-radius:8px;cursor:pointer;transition:border-color .2s, background .2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-case-popup:hover{border-color:var(--accent);background:var(--accent-glow)}
+@media(max-width:760px){.case{grid-template-columns:1fr;gap:16px}.metrics{grid-template-columns:1fr}}
+
+/* ---------- INTERACTIVE ROI CALCULATOR ---------- */
+.calc-card{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(24px,4vw,44px);margin-top:32px;box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.calc-slider-wrap label{display:block;font-family:var(--font-mono);font-size:12px;color:var(--dim);margin-bottom:12px}
+.calc-slider-val{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--text);margin-bottom:14px}
+.slider{
+  -webkit-appearance:none;width:100%;height:8px;border-radius:6px;
+  background:var(--line);outline:none;cursor:pointer;
+}
+.slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:22px;height:22px;
+  border-radius:50%;background:var(--accent);cursor:pointer;
+  box-shadow:0 0 14px rgba(232,163,61,0.6);
+}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.calc-res-item{
+  background:var(--bg);
+  border:1px solid var(--line-soft);
+  padding:22px 18px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-height:130px;
+  transition:border-color .2s, transform .2s;
+}
+.calc-res-item:hover{
+  border-color:rgba(232,163,61,0.4);
+  transform:translateY(-2px);
+}
+.calc-res-item .k{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--dim);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:8px;
+  height:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.calc-res-item .v{
+  font-family:var(--font-display);
+  font-size:clamp(20px, 2.4vw, 25px);
+  font-weight:700;
+  color:var(--pos);
+  line-height:1.2;
+  white-space:nowrap;
+}
+
+/* ---------- SERVICES & 3D TILT CARDS ---------- */
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+.svc-item{
+  background:var(--bg);padding:clamp(24px,3.4vw,38px);transition:background .25s, transform .2s;
+  position:relative;cursor:default;
+}
+.svc-item:hover{background:var(--bg-2)}
+.svc-item h3{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-.02em;margin-top:14px}
+.svc-item p{color:var(--dim);font-size:15px;margin-top:11px}
+.svc-item ul{list-style:none;margin-top:18px;display:flex;flex-wrap:wrap;gap:7px}
+.svc-item li{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:#7A8992;border:1px solid var(--line);border-radius:20px;padding:5px 12px}
+
+/* ---------- STACK CHIPS ---------- */
+.stack{display:flex;flex-wrap:wrap;gap:10px}
+.stack span{
+  font-family:var(--font-mono);font-size:12px;color:var(--dim);
+  border:1px solid var(--line);border-radius:20px;padding:8px 16px;
+  background:var(--bg-2);transition:color .2s,border-color .2s,transform .2s;
+}
+.stack span:hover{color:var(--text);border-color:var(--accent);transform:translateY(-2px)}
+
+/* ---------- TESTIMONIALS ---------- */
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden}
+.quote-item{background:var(--bg);padding:34px 30px;transition:background .2s}
+.quote-item:hover{background:var(--bg-2)}
+.quote-item q{font-family:var(--font-display);font-size:18px;line-height:1.55;color:var(--text);display:block;margin-bottom:18px;font-weight:600}
+.quote-author{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- PROCESS ---------- */
+.step{display:grid;grid-template-columns:64px 1fr;gap:clamp(18px,3vw,40px);padding-block:28px;border-top:1px solid var(--line-soft)}
+.step:first-of-type{border-top:0;padding-top:0}
+.step .num{font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:.1em;padding-top:5px;font-weight:600}
+.step h3{font-family:var(--font-display);font-weight:700;font-size:clamp(18px,2.2vw,22px);letter-spacing:-.02em}
+.step p{color:var(--dim);margin-top:8px;max-width:60ch;font-size:15.5px}
+
+/* ---------- CONTACT ---------- */
+.contact h2{font-size:clamp(32px,5.8vw,64px);max-width:16ch}
+.contact-links{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:32px}
+.mailto{
+  font-family:var(--font-display);font-weight:700;font-size:clamp(19px,3vw,30px);
+  letter-spacing:-.025em;color:var(--accent);border-bottom:1px solid rgba(232,163,61,.32);
+  padding-bottom:4px;transition:border-color .25s;word-break:break-all;
+}
+.mailto:hover{border-bottom-color:var(--accent)}
+.contact-btn{
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:12px 22px;border-radius:10px;border:1px solid var(--line);background:var(--bg-2);
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.contact-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.avail{display:flex;align-items:center;gap:9px;margin-top:36px}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding-block:32px;background:var(--bg)}
+.foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- MODAL POPUP SYSTEM (STRICTLY HIDDEN WHEN CLOSED) ---------- */
+.modal-overlay{
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background:rgba(5,7,9,0.88);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  z-index:999999;display:none;visibility:hidden;
+  align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;
+  transition:opacity .3s ease, visibility .3s ease;
+}
+.modal-overlay.active{
+  display:flex!important;visibility:visible!important;
+  opacity:1!important;pointer-events:auto!important;
+}
+.modal-box{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:16px;
+  max-width:680px;width:100%;max-height:88vh;overflow-y:auto;
+  padding:clamp(24px,4vw,40px);position:relative;transform:translateY(24px) scale(0.96);
+  transition:transform .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow:0 25px 60px rgba(0,0,0,0.8);
+}
+.modal-overlay.active .modal-box{transform:translateY(0) scale(1)}
+.modal-close{
+  position:absolute;top:18px;right:18px;width:34px;height:34px;border:1px solid var(--line);
+  background:var(--bg);color:var(--text);border-radius:8px;cursor:pointer;
+  display:grid;place-items:center;font-size:18px;transition:border-color .2s;
+}
+.modal-close:hover{border-color:var(--accent);color:var(--accent)}
+.modal-header{margin-bottom:20px}
+.modal-header h3{font-family:var(--font-display);font-size:24px;font-weight:700}
+.modal-header .tag{font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:8px;display:block}
+.modal-content{color:var(--dim);font-size:15px;line-height:1.7}
+.modal-content ul{margin-top:14px;list-style-position:inside}
+.modal-content li{margin-bottom:8px}
+
+/* ---------- FLOATING AUDIT DRAWER TRIGGER & LIVE TOAST ---------- */
+.floating-pill-cta{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  background:var(--accent);color:#111;padding:12px 22px;border-radius:50px;
+  font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+  box-shadow:0 10px 30px rgba(232,163,61,0.4);display:flex;align-items:center;gap:8px;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;border:none;
+}
+.floating-pill-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 40px rgba(232,163,61,0.6)}
+
+.toast-pill{
+  position:fixed;bottom:24px;left:24px;z-index:900;
+  background:var(--bg-2);border:1px solid var(--line);color:var(--text);
+  padding:10px 20px;border-radius:10px;font-family:var(--font-mono);font-size:11px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);display:flex;align-items:center;gap:10px;
+  transform:translateY(80px);opacity:0;transition:transform .4s ease, opacity .4s ease;
+}
+.toast-pill.show{transform:translateY(0);opacity:1}
+.toast-pill .toast-dot{width:6px;height:6px;border-radius:50%;background:var(--pos);box-shadow:0 0 8px var(--pos)}
+
+/* ---------- MOTION DECORATORS ---------- */
+.rise{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rise.in{opacity:1;transform:none}
+
+/* ---------- MOBILE NAVIGATION DRAWER & EXPANDED RESPONSIVENESS ---------- */
+.mobile-menu-btn{
+  display:none;background:none;border:none;color:var(--text);
+  cursor:pointer;padding:6px;border-radius:8px;
+}
+.mobile-drawer{
+  position:fixed;top:66px;left:0;width:100%;height:calc(100vh - 66px);
+  background:rgba(9,13,16,0.98);backdrop-filter:blur(20px);
+  z-index:99;padding:32px 24px;display:flex;flex-direction:column;gap:20px;
+  transform:translateY(-100%);opacity:0;pointer-events:none;
+  transition:transform .35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity .35s ease;
+}
+.mobile-drawer.open{
+  transform:translateY(0);opacity:1;pointer-events:auto;
+}
+.mobile-drawer a{
+  font-family:var(--font-display);font-size:22px;font-weight:700;
+  color:var(--text);border-bottom:1px solid var(--line-soft);padding-bottom:14px;
+}
+.mobile-drawer a:hover{color:var(--accent)}
+
+@media(max-width:820px){
+  .nav-links a:not(.nav-cta){display:none}
+  .mobile-menu-btn{display:block}
+  .about-grid{grid-template-columns:1fr!important}
+  .calc-grid{grid-template-columns:1fr!important}
+  .svc{grid-template-columns:1fr!important}
+  .quotes{grid-template-columns:1fr!important}
+  .time-row{grid-template-columns:1fr!important;gap:8px!important}
+  .case{grid-template-columns:1fr!important;gap:16px!important}
+  .metrics{grid-template-columns:1fr!important}
+  .hero-main-title{font-size:42px!important}
+  .floating-pill-cta{bottom:16px;right:16px;font-size:10px;padding:10px 16px}
+  .toast-pill{display:none!important}
+}
+
+@media(min-width:1440px){
+  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center}
+  .hero h1{font-size:92px;max-width:18ch}
+  .hero-sub{font-size:21px;max-width:62ch}
+  .about-grid{grid-template-columns:460px 1fr;gap:70px}
+  .svc{grid-template-columns:repeat(2, 1fr)}
+  .sec-head h2{font-size:54px}
+}
+</style>
+</head>
+<body>
+
+<!-- Mobile Drawer Menu -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#about" onclick="toggleMobileMenu()">About</a>
+  <a href="#work" onclick="toggleMobileMenu()">Work</a>
+  <a href="#services" onclick="toggleMobileMenu()">Services</a>
+  <a href="#calculator" onclick="toggleMobileMenu()">ROI Engine</a>
+  <a href="#expertise" onclick="toggleMobileMenu()">Expertise</a>
+  <a href="#process" onclick="toggleMobileMenu()">Process</a>
+  <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  <a href="https://wa.me/916383267735" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">
+    <i data-lucide="message-square"></i> WhatsApp Direct
+  </a>
+</div>
+
+<!-- ================= INTRO PRELOADER ANIMATION ================= -->
+<div id="preloader">
+  <div class="loader-content">
+    <div class="loader-badge">
+      <i data-lucide="activity" style="width:12px;height:12px"></i> INITIALIZING MARKETING OS
+    </div>
+    
+    <div class="loader-name">Surya S<span>.</span></div>
+    
+    <div class="loader-role-slider">
+      <div class="loader-single-role" id="loaderSingleRole">
+        <span id="loaderRoleIcon" style="display:inline-flex;align-items:center"><i data-lucide="line-chart" style="width:15px;height:15px"></i></span>
+        <span id="loaderRoleText">DIGITAL MARKETING MANAGER</span>
+      </div>
+    </div>
+
+    <div class="loader-bar-frame">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+
+    <div class="loader-footer-meta">
+      <span id="loaderStatus">CALIBRATING ATTRIBUTION PIPELINES...</span>
+      <span id="loaderPercent" style="color:var(--accent);font-weight:700">0%</span>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Particle Canvas Background -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Custom Magnetic Cursor -->
+<div id="custom-cursor"></div>
+<div id="cursor-follower"></div>
+
+<!-- Top Scroll Progress Bar -->
+<div id="scroll-progress"></div>
+
+<!-- ================= NAVIGATION ================= -->
+<nav class="nav" id="navbar">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">
+      <span class="brand-avatar">S</span>
+      <span>Surya S<b>.</b></span>
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#calculator">ROI Engine</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+      <i data-lucide="menu" id="menuIcon"></i>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <header class="wrap hero">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      <span class="mono">Digital Marketing Manager &amp; AI Automation · Bangalore &amp; Remote</span>
+    </div>
+
+    <div class="variant" id="variant">
+      <h1 class="disp" id="headline">
+        Marketing meets <em>machine intelligence.</em>
+      </h1>
+      <p class="hero-sub" id="subhead">
+        Helping brands grow through strategic marketing, intelligent automation, AI integration, and high-converting digital experiences.
+      </p>
+    </div>
+
+    <div class="hero-ventures">
+      <span class="mono">Founder of</span>
+      <span class="venture-chip">AKOON IGNITE</span>
+      <span class="mono">&amp;</span>
+      <span class="venture-chip">GetWy</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/916383267735" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <i data-lucide="message-square"></i> Let's Talk on WhatsApp
+      </a>
+      <button type="button" class="btn btn-ghost" onclick="openAuditModal()">
+        <i data-lucide="sparkles"></i> Request Free Audit
+      </button>
+      <a href="#work" class="btn btn-ghost">
+        <i data-lucide="folder-kanban"></i> View Portfolio
+      </a>
+    </div>
+
+    <!-- LIVE A/B TEST PANEL -->
+    <section class="exp" aria-label="Headline experiment">
+      <div class="exp-top">
+        <div class="exp-id">
+          <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--pos)"></span>
+          <span class="mono">Live Experiment · surya-growth-opt-01</span>
+        </div>
+        <div class="switch" role="group" aria-label="Choose headline variant">
+          <button type="button" data-v="a" aria-pressed="true">Option A</button>
+          <button type="button" data-v="b" aria-pressed="false">Option B</button>
+        </div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-stat">
+          <span class="mono">Track Record</span>
+          <span class="v" id="stat-n">4+ Years</span>
+        </div>
+        <div class="exp-stat">
+          <span class="mono">Organic Traffic Lift</span>
+          <span class="v up" id="stat-cv">+185%</span>
+        </div>
+        <div class="exp-stat">
+          <span class="mono">Automation Efficiency</span>
+          <span class="v up" id="stat-lift">+70%</span>
+        </div>
+        <div class="exp-stat">
+          <span class="mono">Attribution Accuracy</span>
+          <span class="v" id="stat-conf">99.4%</span>
+        </div>
+      </div>
+    </section>
+    <p class="exp-note">
+      Performance marketing built on statistical compounding. Flip between variants to test real positioning.
+    </p>
+  </header>
+
+  <!-- ================= CONTINUOUS BRANDS MARQUEE ================= -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">AKOON IGNITE</span>
+      <span class="marquee-item">GetWy</span>
+      <span class="marquee-item">Vaishno Group</span>
+      <span class="marquee-item">House of Mango Tree</span>
+      <span class="marquee-item">KARE</span>
+      <span class="marquee-item">ILIFE</span>
+      <span class="marquee-item">WordFunds</span>
+      <span class="marquee-item">Superryze</span>
+      <span class="marquee-item">Abinam Healthcare</span>
+      <span class="marquee-item">Annapoorna APT</span>
+      <span class="marquee-item">Kavya Bridals</span>
+      <!-- Repeated for seamless loop -->
+      <span class="marquee-item">AKOON IGNITE</span>
+      <span class="marquee-item">GetWy</span>
+      <span class="marquee-item">Vaishno Group</span>
+      <span class="marquee-item">House of Mango Tree</span>
+      <span class="marquee-item">KARE</span>
+      <span class="marquee-item">ILIFE</span>
+      <span class="marquee-item">WordFunds</span>
+      <span class="marquee-item">Superryze</span>
+      <span class="marquee-item">Abinam Healthcare</span>
+      <span class="marquee-item">Annapoorna APT</span>
+      <span class="marquee-item">Kavya Bridals</span>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT SECTION ================= -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">About Surya S</span>
+        <h2 class="disp">Quietly killing everything that isn't working.</h2>
+        <p>Clean funnels, sharp positioning, and automated workflows that don't waste your team's time.</p>
+      </div>
+
+      <div class="about-grid rise">
+        <div class="about-portrait-card">
+          <img src="surya_portrait_original.png" alt="Surya S — Digital Marketing Strategist & AI Automation Expert" loading="eager" fetchpriority="high">
+          <div class="about-portrait-meta">
+            <div>
+              <h4>Surya S</h4>
+              <p class="mono" style="font-size:10px;color:var(--dim)">Founder · Digital Marketing Manager</p>
+            </div>
+            <span>Bangalore, IN</span>
+          </div>
+        </div>
+
+        <div class="about-body">
+          <p>
+            Hey, I'm Surya — based out of <strong>Bangalore</strong>. I spend most of my day helping founders and marketing teams figure out what's actually working, and quietly kill everything that isn't.
+          </p>
+          <p>
+            For the last four years I've worked across <strong>healthcare, real estate, retail, finance and D2C</strong> — running SEO, paid ads, websites, social, and lately a lot of AI automation. I'm less into buzzwords and more into building things that keep running after I log off: clean funnels, sharp positioning, and workflows that stop wasting your team's time.
+          </p>
+          <p>
+            I also run <strong>AKOON IGNITE</strong> and <strong>GetWy</strong> — two small bets on the idea that good marketing should feel a little more human and a lot less like a template. If you're building something interesting, I'd love to hear about it.
+          </p>
+          <div class="about-pills">
+            <span>Growth Focused</span>
+            <span>ROI Focused</span>
+            <span>Automation First</span>
+            <span>Conversion Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TIMELINE ================= -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Operating History</span>
+        <h2 class="disp">Four years of momentum.</h2>
+        <p>Building compounding organic traffic and automation architecture from day one.</p>
+      </div>
+
+      <div class="timeline rise">
+        <div class="time-row">
+          <div class="time-year">2025 — NOW</div>
+          <div class="time-role">Founder <small>AKOON IGNITE &amp; GetWy</small></div>
+          <div class="time-desc">Building marketing &amp; automation studios helping brands scale with AI-first systems.</div>
+        </div>
+        <div class="time-row">
+          <div class="time-year">2024</div>
+          <div class="time-role">AI Automation Expert <small>Independent Consultant</small></div>
+          <div class="time-desc">Designing intelligent workflows using n8n, Zapier, CRM automation, WhatsApp APIs, and AI agents.</div>
+        </div>
+        <div class="time-row">
+          <div class="time-year">2023</div>
+          <div class="time-role">Business Consultant <small>Multi-industry</small></div>
+          <div class="time-desc">Advising founders on funnels, revenue planning, customer journey mapping, and go-to-market strategy.</div>
+        </div>
+        <div class="time-row">
+          <div class="time-year">2022</div>
+          <div class="time-role">Performance Marketing <small>Agency &amp; Growth</small></div>
+          <div class="time-desc">Managing Google, Meta, and shopping ads with full conversion tracking for eCommerce and B2B brands.</div>
+        </div>
+        <div class="time-row">
+          <div class="time-year">2021</div>
+          <div class="time-role">SEO &amp; Web Systems <small>Specialist</small></div>
+          <div class="time-desc">Building websites, technical SEO systems, WordPress/WooCommerce architectures, and ranking pages that convert.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SELECTED WORK / CASE STUDIES ================= -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Selected Work</span>
+        <h2 class="disp">Proven systems, and what actually moved them.</h2>
+        <p>Verified outcomes delivered across organic search, performance acquisition, and intelligent automation.</p>
+      </div>
+
+      <!-- Case 1 -->
+      <article class="case rise">
+        <div class="case-meta">
+          <span class="client">Healthcare &amp; Clinic Brand</span>
+          <span class="mono">Technical SEO + Ads</span>
+          <span class="mono" style="color:#4E5C64">8 Months Engagement</span>
+        </div>
+        <div>
+          <h3 class="disp">Multiplied organic qualified inquiries while slashing cost per lead</h3>
+          <p>
+            Re-engineered technical SEO structure, fixed critical indexation bottlenecks, and restructured Google Search campaigns to focus exclusively on high-intent service keywords instead of generic terms.
+          </p>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Qualified Inquiries</div>
+              <div class="n">+185%</div>
+              <div class="d">High intent</div>
+            </div>
+            <div class="metric">
+              <div class="k">Cost per Lead</div>
+              <div class="n">−42%</div>
+              <div class="d">Optimized CPA</div>
+            </div>
+            <div class="metric">
+              <div class="k">Organic Keywords #1</div>
+              <div class="n">48+</div>
+              <div class="d">+210% rank lift</div>
+            </div>
+          </div>
+          <div class="case-actions">
+            <button class="btn-case-popup" onclick="openCaseModal('healthcare')">
+              <i data-lucide="info"></i> View Strategy Breakdown
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case rise">
+        <div class="case-meta">
+          <span class="client">D2C &amp; Retail Brand</span>
+          <span class="mono">Meta Ads + n8n Automation</span>
+          <span class="mono" style="color:#4E5C64">6 Months</span>
+        </div>
+        <div>
+          <h3 class="disp">Scaled monthly revenue with automated WhatsApp &amp; CRM lead nurturing</h3>
+          <p>
+            Integrated n8n workflows connecting ad forms directly with WhatsApp instant responder agents and CRM pipeline stages. Zero manual lag time for incoming buyer intent.
+          </p>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Blended ROAS</div>
+              <div class="n">2.2× → 4.8×</div>
+              <div class="d">+118% return</div>
+            </div>
+            <div class="metric">
+              <div class="k">Lead Response Time</div>
+              <div class="n">45m → 12s</div>
+              <div class="d">Instant agent</div>
+            </div>
+            <div class="metric">
+              <div class="k">Cart Recovery</div>
+              <div class="n">34%</div>
+              <div class="d">+19 pts</div>
+            </div>
+          </div>
+          <div class="case-actions">
+            <button class="btn-case-popup" onclick="openCaseModal('d2c')">
+              <i data-lucide="info"></i> View Strategy Breakdown
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case rise">
+        <div class="case-meta">
+          <span class="client">Real Estate &amp; B2B Group</span>
+          <span class="mono">Funnel + CRO + GA4</span>
+          <span class="mono" style="color:#4E5C64">12 Months</span>
+        </div>
+        <div>
+          <h3 class="disp">Rebuilt landing page architecture and full measurement pipeline</h3>
+          <p>
+            Developed custom landing pages with clear value framing, server-side GA4 event tracking, and Looker Studio live dashboards for real-time sales visibility.
+          </p>
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">Landing Page CVR</div>
+              <div class="n">1.8% → 4.9%</div>
+              <div class="d">+172% conversion</div>
+            </div>
+            <div class="metric">
+              <div class="k">Pipeline Value</div>
+              <div class="n">₹3.2Cr+</div>
+              <div class="d">Tracked revenue</div>
+            </div>
+            <div class="metric">
+              <div class="k">Attribution Accuracy</div>
+              <div class="n">99%</div>
+              <div class="d">Server-side tag</div>
+            </div>
+          </div>
+          <div class="case-actions">
+            <button class="btn-case-popup" onclick="openCaseModal('realestate')">
+              <i data-lucide="info"></i> View Strategy Breakdown
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE ROI & CAC GROWTH CALCULATOR ================= -->
+  <section class="sec" id="calculator">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Interactive Engine</span>
+        <h2 class="disp">Calculate your growth leverage.</h2>
+        <p>See how much compounding revenue and operational hours are unlocked through automated funnels.</p>
+      </div>
+
+      <div class="calc-card rise">
+        <div class="calc-grid">
+          <div class="calc-slider-wrap">
+            <label for="monthlySpend">Current Monthly Marketing Budget (₹)</label>
+            <div class="calc-slider-val" id="spendDisplay">₹1,00,000</div>
+            <input type="range" min="20000" max="1000000" step="10000" value="100000" class="slider" id="monthlySpend">
+            <p style="color:var(--dim);font-size:13px;margin-top:14px">
+              Drag slider to calculate estimated return using high-converting SEO &amp; performance ads.
+            </p>
+          </div>
+
+          <div class="calc-results">
+            <div class="calc-res-item">
+              <div class="k">Estimated Pipeline Value</div>
+              <div class="v" id="projectedRevenue">₹3,80,000</div>
+            </div>
+            <div class="calc-res-item">
+              <div class="k">Projected ROAS</div>
+              <div class="v" id="projectedRoas">3.8×</div>
+            </div>
+            <div class="calc-res-item">
+              <div class="k">Saved Team Hours / Mo</div>
+              <div class="v" id="savedHours">48 Hrs</div>
+            </div>
+            <div class="calc-res-item">
+              <div class="k">Estimated CPA Reduction</div>
+              <div class="v">−40% Avg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Services</span>
+        <h2 class="disp">Core strategic capabilities.</h2>
+        <p>Full-funnel organic strategy, intelligent automation, and performance marketing engineered for ROAS.</p>
+      </div>
+
+      <div class="svc rise">
+        <div class="svc-item">
+          <span class="mono">01 / Organic Growth</span>
+          <h3>SEO Consulting</h3>
+          <p>Full-funnel organic strategy — technical audits, on-page optimization, keyword architecture, and content engine.</p>
+          <ul><li>Technical SEO</li><li>On-Page</li><li>Search Console</li><li>Content Strategy</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">02 / Acquisition</span>
+          <h3>Performance Marketing</h3>
+          <p>Google &amp; Meta advertising engineered for ROAS and revenue growth, never just vanity traffic.</p>
+          <ul><li>Google Ads</li><li>Meta Ads</li><li>Lead Gen</li><li>Remarketing</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">03 / Automation</span>
+          <h3>AI Automation &amp; Agents</h3>
+          <p>n8n, Zapier, and custom AI agents that eliminate repetitive work and speed up sales operations.</p>
+          <ul><li>n8n Workflows</li><li>Zapier</li><li>CRM Automation</li><li>WhatsApp Bots</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">04 / Development &amp; CRO</span>
+          <h3>Website Development</h3>
+          <p>Lightning-fast WordPress, WooCommerce, and conversion-optimized landing pages built to turn traffic into revenue.</p>
+          <ul><li>WordPress</li><li>WooCommerce</li><li>Landing Pages</li><li>CRO Optimization</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERTISE BREAKDOWN ================= -->
+  <section class="sec" id="expertise">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Skill Architecture</span>
+        <h2 class="disp">Eight domains of execution.</h2>
+        <p>A comprehensive toolkit spanning acquisition, technology, intelligence, and analytics.</p>
+      </div>
+
+      <div class="svc rise">
+        <div class="svc-item">
+          <span class="mono">SEO Domain</span>
+          <h3>Search Engine Optimization</h3>
+          <p>End-to-end technical, on-page, local, and eCommerce search positioning.</p>
+          <ul><li>Technical SEO</li><li>On-Page</li><li>Off-Page</li><li>Local SEO</li><li>eCommerce SEO</li><li>Keyword Research</li><li>Website Audit</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">Social Domain</span>
+          <h3>Social Media &amp; Brand</h3>
+          <p>Organic positioning, distribution, and community building across key channels.</p>
+          <ul><li>Instagram</li><li>Facebook</li><li>LinkedIn</li><li>YouTube</li><li>Brand Building</li><li>Community Growth</li><li>Content Marketing</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">AI &amp; Tech</span>
+          <h3>AI Integration</h3>
+          <p>Intelligent agent workflows, custom prompt systems, and business automation.</p>
+          <ul><li>Chatbots</li><li>AI Workflows</li><li>Prompt Engineering</li><li>AI Agents</li><li>Business Automation</li></ul>
+        </div>
+        <div class="svc-item">
+          <span class="mono">Strategy &amp; Data</span>
+          <h3>Consulting &amp; Analytics</h3>
+          <p>Clean revenue planning, customer journey mapping, GA4, and executive dashboards.</p>
+          <ul><li>Sales Funnel</li><li>Growth Strategy</li><li>Revenue Planning</li><li>GA4</li><li>Looker Studio</li><li>Attribution</li><li>Insights</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STACK ================= -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Technology Stack</span>
+        <h2 class="disp">Tools I run every day.</h2>
+      </div>
+      <div class="stack rise">
+        <span>GA4</span><span>Google Tag Manager</span><span>Google Ads</span><span>Meta Ads Manager</span>
+        <span>n8n</span><span>Zapier</span><span>Looker Studio</span><span>WordPress</span>
+        <span>WooCommerce</span><span>Elementor</span><span>Search Console</span><span>Ahrefs</span>
+        <span>WhatsApp Business API</span><span>HubSpot</span><span>OpenAI / Gemini</span><span>CRM Automation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS / TESTIMONIALS ================= -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Reviews</span>
+        <h2 class="disp">Words from the room.</h2>
+        <p>What founders and team leaders say about the engagements.</p>
+      </div>
+
+      <div class="quotes rise">
+        <div class="quote-item">
+          <q>"Surya transformed our digital presence and significantly improved our lead quality through strategic SEO and performance marketing."</q>
+          <span class="quote-author">Healthcare Brand Director</span>
+        </div>
+        <div class="quote-item">
+          <q>"Professional, creative, and highly knowledgeable. The website and marketing strategy exceeded expectations."</q>
+          <span class="quote-author">Real Estate Founder</span>
+        </div>
+        <div class="quote-item">
+          <q>"Outstanding SEO execution with measurable business growth."</q>
+          <span class="quote-author">eCommerce Head</span>
+        </div>
+        <div class="quote-item">
+          <q>"A true marketing strategist who understands both technology and business."</q>
+          <span class="quote-author">Tech Startup Founder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="sec" id="process">
+    <div class="wrap">
+      <div class="sec-head rise">
+        <span class="mono">Operating System</span>
+        <h2 class="disp">Six steps, one system.</h2>
+      </div>
+
+      <div class="rise">
+        <div class="step">
+          <div class="num">01</div>
+          <div>
+            <h3 class="disp">Discovery</h3>
+            <p>Understand goals, target market, unit economics, and operational constraints.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <div>
+            <h3 class="disp">Research</h3>
+            <p>Audience analysis, competitor intelligence, keyword research, and channel economics.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <div>
+            <h3 class="disp">Architecture</h3>
+            <p>Strategic roadmap, key metrics (KPIs), funnel blueprint, and automation mapping.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <div>
+            <h3 class="disp">Execution</h3>
+            <p>Ship content, launch high-ROAS ads, deploy optimized site pages, and activate workflows.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">05</div>
+          <div>
+            <h3 class="disp">Optimization</h3>
+            <p>Iterate with real data, continuous A/B testing, and conversion refinement.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">06</div>
+          <div>
+            <h3 class="disp">Scale</h3>
+            <p>Compound winning channels into automated, self-sustaining growth engines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="sec contact" id="contact">
+    <div class="wrap rise">
+      <span class="mono">Let's Connect</span>
+      <h2 class="disp" style="margin-top:16px">Let's build something extraordinary.</h2>
+      <p style="color:var(--dim);margin-top:14px;max-width:50ch;font-size:16px">
+        Tell me about your brand. I'll show you the fastest path to compounding growth.
+      </p>
+      
+      <div class="contact-links">
+        <a class="mailto" href="mailto:suryadigitalapex@gmail.com">suryadigitalapex@gmail.com</a>
+        <a href="tel:+916383267735" class="contact-btn">+91 63832 67735</a>
+        <a href="https://wa.me/916383267735" target="_blank" rel="noopener noreferrer" class="contact-btn">WhatsApp</a>
+        <a href="https://linkedin.com/in/surya-somasundaram21" target="_blank" rel="noopener noreferrer" class="contact-btn">LinkedIn</a>
+      </div>
+
+      <div class="avail">
+        <span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--pos);animation:pulse 2s infinite"></span>
+        <span class="mono">Available for strategic projects &amp; consults</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap foot-in">
+    <span class="mono">© 2026 Surya S · Digital Marketing Manager &amp; AI Automation Expert</span>
+    <span class="mono" style="color:#4E5C64">Bangalore · India</span>
+  </div>
+</footer>
+
+<!-- ================= FLOATING CTA BUTTON & SOCIAL PROOF TOAST ================= -->
+<button class="floating-pill-cta" onclick="openAuditModal()">
+  <i data-lucide="sparkles"></i> Free Funnel Audit
+</button>
+
+<div class="toast-pill" id="liveToast">
+  <span class="toast-dot"></span>
+  <span id="toastMessage">📈 Scaled Healthcare client: +185% inquiries</span>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- 1. Strategy Breakdown Modal -->
+<div class="modal-overlay" id="caseModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('caseModal')">&times;</button>
+    <div class="modal-header">
+      <span class="tag" id="modalTag">CASE STUDY STRATEGY</span>
+      <h3 id="modalTitle">Growth Architecture</h3>
+    </div>
+    <div class="modal-content" id="modalBody">
+      <!-- Injected dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- 2. Free Audit Request Modal -->
+<div class="modal-overlay" id="auditModal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('auditModal')">&times;</button>
+    <div class="modal-header">
+      <span class="tag">COMPLIMENTARY REVIEW</span>
+      <h3>Request a 1-on-1 Growth Audit</h3>
+    </div>
+    <div class="modal-content">
+      <p>
+        I personally review your website, ad accounts, and SEO structure to uncover the fastest 3 fixes to increase conversions.
+      </p>
+      <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px">
+        <input type="text" id="auditBrand" placeholder="Your Brand / Website URL (e.g. yourbrand.com)" style="background:var(--bg);border:1px solid var(--line);padding:12px;color:var(--text);border-radius:2px;font-family:var(--font-body)">
+        <input type="text" id="auditGoal" placeholder="Main Goal (e.g. Scale ROAS, Rank #1 on Google, Automate Leads)" style="background:var(--bg);border:1px solid var(--line);padding:12px;color:var(--text);border-radius:2px;font-family:var(--font-body)">
+        <a href="https://wa.me/916383267735?text=Hi%20Surya,%20I%20would%20like%20to%20request%20a%20Growth%20Audit%20for%20my%20brand." id="sendAuditBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="justify-content:center;margin-top:6px">
+          Send via WhatsApp &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Initialize Lucide Icons
+lucide.createIcons();
+
+/* -------------------------------------------------------------
+   1. INTRO / PRELOADER ANIMATION (ONE TITLE AT A TIME)
+------------------------------------------------------------- */
+const preloader = document.getElementById('preloader');
+const loaderBar = document.getElementById('loaderBar');
+const loaderPercent = document.getElementById('loaderPercent');
+const loaderStatus = document.getElementById('loaderStatus');
+const loaderSingleRole = document.getElementById('loaderSingleRole');
+const loaderRoleText = document.getElementById('loaderRoleText');
+const loaderRoleIcon = document.getElementById('loaderRoleIcon');
+
+const ROLES_SEQUENCE = [
+  { icon: 'line-chart', text: 'DIGITAL MARKETING MANAGER', status: 'INITIALIZING ATTRIBUTION ENGINES...' },
+  { icon: 'bot', text: 'AI AUTOMATION ARCHITECT', status: 'CONNECTING GOOGLE & META CONVERSION APIS...' },
+  { icon: 'search', text: 'FULL-STACK SEO CONSULTANT', status: 'CALIBRATING KEYWORD RANKINGS...' },
+  { icon: 'target', text: 'PERFORMANCE ACQUISITION LEAD', status: 'SYSTEM READY — DIGITAL MARKETING MANAGER' }
+];
+
+let progress = 0;
+let currentRoleIndex = -1;
+
+function switchRole(newIndex) {
+  if (newIndex === currentRoleIndex || newIndex >= ROLES_SEQUENCE.length) return;
+  currentRoleIndex = newIndex;
+  loaderSingleRole.classList.add('switching');
+  setTimeout(() => {
+    const item = ROLES_SEQUENCE[newIndex];
+    if (loaderRoleText) loaderRoleText.textContent = item.text;
+    if (loaderStatus) loaderStatus.textContent = item.status;
+    if (loaderRoleIcon) {
+      loaderRoleIcon.innerHTML = `<i data-lucide="${item.icon}" style="width:15px;height:15px"></i>`;
+      if (window.lucide && lucide.createIcons) {
+        lucide.createIcons();
+      }
+    }
+    loaderSingleRole.classList.remove('switching');
+  }, 180);
+}
+
+const interval = setInterval(() => {
+  progress += Math.floor(Math.random() * 3) + 2;
+  if (progress > 100) progress = 100;
+  
+  loaderBar.style.width = progress + '%';
+  loaderPercent.textContent = progress + '%';
+
+  // Smooth threshold switching: exactly one title at a time
+  if (progress < 28) {
+    switchRole(0);
+  } else if (progress >= 28 && progress < 55) {
+    switchRole(1);
+  } else if (progress >= 55 && progress < 80) {
+    switchRole(2);
+  } else if (progress >= 80) {
+    switchRole(3);
+  }
+
+  if (progress === 100) {
+    clearInterval(interval);
+    setTimeout(() => {
+      gsap.to(preloader, {
+        opacity: 0,
+        scale: 1.04,
+        duration: 0.8,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          preloader.style.display = 'none';
+        }
+      });
+    }, 700);
+  }
+}, 65);
+
+/* -------------------------------------------------------------
+   2. Interactive Ambient Canvas Particle Grid
+------------------------------------------------------------- */
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width = (canvas.width = window.innerWidth);
+let height = (canvas.height = window.innerHeight);
+
+const particles = [];
+const PARTICLE_COUNT = 45;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 0.5;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0) this.x = width;
+    if (this.x > width) this.x = 0;
+    if (this.y < 0) this.y = height;
+    if (this.y > height) this.y = 0;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(232, 163, 61, 0.4)';
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, width, height);
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].draw();
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 110) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(31, 42, 50, ${1 - dist / 110})`;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('resize', () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
+/* -------------------------------------------------------------
+   3. Custom Magnetic Cursor Physics
+------------------------------------------------------------- */
+const cursor = document.getElementById('custom-cursor');
+const follower = document.getElementById('cursor-follower');
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateFollower() {
+  followerX += (mouseX - followerX) * 0.15;
+  followerY += (mouseY - followerY) * 0.15;
+  follower.style.left = followerX + 'px';
+  follower.style.top = followerY + 'px';
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
+const hoverTargets = document.querySelectorAll('a, button, input, .case, .svc-item, .exp, .stack span');
+hoverTargets.forEach((el) => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+});
+
+/* -------------------------------------------------------------
+   4. Scroll Progress Bar
+------------------------------------------------------------- */
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+});
+
+/* -------------------------------------------------------------
+   5. Live A/B Headline Switch
+------------------------------------------------------------- */
+const VARIANTS = {
+  a: {
+    headline: 'Marketing meets <em>machine intelligence.</em>',
+    subhead: 'Helping brands grow through strategic marketing, intelligent automation, AI integration, and high-converting digital experiences.',
+    n: '4+ Years', cv: '+185%', lift: '+70%', conf: '99.4%'
+  },
+  b: {
+    headline: 'Clean funnels. Sharp positioning. <em>Zero fluff.</em>',
+    subhead: 'Four years across healthcare, real estate, retail, finance and D2C — building systems that keep compounding after I log off.',
+    n: '8+ Domains', cv: '4.8× ROAS', lift: '+118%', conf: '98.8%'
+  }
+};
+
+const headEl = document.getElementById('headline');
+const subEl = document.getElementById('subhead');
+const stats = {
+  n: document.getElementById('stat-n'),
+  cv: document.getElementById('stat-cv'),
+  lift: document.getElementById('stat-lift'),
+  conf: document.getElementById('stat-conf')
+};
+const switchBtns = document.querySelectorAll('.switch button');
+
+function applyVariant(key) {
+  const v = VARIANTS[key];
+  headEl.innerHTML = v.headline;
+  subEl.textContent = v.subhead;
+  stats.n.textContent = v.n;
+  stats.cv.textContent = v.cv;
+  stats.lift.textContent = v.lift;
+  stats.conf.textContent = v.conf;
+  switchBtns.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.v === key)));
+}
+switchBtns.forEach(btn => btn.addEventListener('click', () => applyVariant(btn.dataset.v)));
+
+/* -------------------------------------------------------------
+   6. Interactive ROI & CAC Growth Calculator Engine
+------------------------------------------------------------- */
+const spendSlider = document.getElementById('monthlySpend');
+const spendDisplay = document.getElementById('spendDisplay');
+const projectedRevenue = document.getElementById('projectedRevenue');
+const projectedRoas = document.getElementById('projectedRoas');
+const savedHours = document.getElementById('savedHours');
+
+spendSlider.addEventListener('input', (e) => {
+  const spend = parseInt(e.target.value, 10);
+  spendDisplay.textContent = '₹' + spend.toLocaleString('en-IN');
+  
+  let roas = 4.2;
+  if (spend > 400000) roas = 3.6;
+  else if (spend > 200000) roas = 3.9;
+
+  const estRev = Math.round(spend * roas);
+  const hours = Math.min(80, Math.round(30 + (spend / 20000)));
+
+  projectedRevenue.textContent = '₹' + estRev.toLocaleString('en-IN');
+  projectedRoas.textContent = roas.toFixed(1) + '×';
+  savedHours.textContent = hours + ' Hrs';
+});
+
+/* -------------------------------------------------------------
+   7. Case Study Strategy Modals System
+------------------------------------------------------------- */
+const CASE_DATA = {
+  healthcare: {
+    tag: 'HEALTHCARE & CLINIC CLIENT',
+    title: 'Technical SEO & Intent Restructuring',
+    body: `
+      <p><strong>The Bottleneck:</strong> The clinic had a high domain authority but was losing 65% of potential leads due to un-indexed service pages, duplicate meta parameters, and broad-match ad targeting wasting budget on informational searches.</p>
+      <ul style="margin-top:12px;margin-bottom:12px">
+        <li><strong>Step 1:</strong> Fixed XML sitemap canonical loops and implemented structured schema for local medical specialties.</li>
+        <li><strong>Step 2:</strong> Re-architected Google Ads into Single-Theme Ad Groups (STAGs) targeting high-intent localized searchers.</li>
+        <li><strong>Step 3:</strong> Deployed WhatsApp automatic booking integration reducing response time from 3 hours to 10 seconds.</li>
+      </ul>
+      <p><strong>Outcome:</strong> Organic traffic skyrocketed by +185%, with an immediate 42% reduction in blended CPA.</p>
+    `
+  },
+  d2c: {
+    tag: 'D2C ECOMMERCE CLIENT',
+    title: 'n8n Workflow Automation & ROAS Scaling',
+    body: `
+      <p><strong>The Bottleneck:</strong> Cart abandonment was sitting at 74% and manual WhatsApp follow-ups were happening hours later when buyer intent had already cooled down.</p>
+      <ul style="margin-top:12px;margin-bottom:12px">
+        <li><strong>Step 1:</strong> Built an automated n8n webhook listener connected to checkout abandonment events.</li>
+        <li><strong>Step 2:</strong> Triggered personalized WhatsApp recovery messages with dynamic discount incentives within 8 minutes.</li>
+        <li><strong>Step 3:</strong> Optimized Meta ad creative testing with creative fatigue alerts directly in Slack.</li>
+      </ul>
+      <p><strong>Outcome:</strong> ROAS increased from 2.2x to 4.8x, recapturing 34% of abandoned carts autonomously.</p>
+    `
+  },
+  realestate: {
+    tag: 'B2B & REAL ESTATE CLIENT',
+    title: 'High-Converting Landing Pages & Server-Side GA4',
+    body: `
+      <p><strong>The Bottleneck:</strong> Client was generating leads through slow-loading generic templates with broken cookie attribution on iOS devices.</p>
+      <ul style="margin-top:12px;margin-bottom:12px">
+        <li><strong>Step 1:</strong> Re-built high-velocity landing pages with sub-second page speeds and clear value hierarchy.</li>
+        <li><strong>Step 2:</strong> Implemented server-side Google Tag Manager and Conversions API (CAPI) for 99%+ attribution accuracy.</li>
+        <li><strong>Step 3:</strong> Connected Looker Studio executive dashboards for real-time lead score visibility.</li>
+      </ul>
+      <p><strong>Outcome:</strong> CVR increased from 1.8% to 4.9%, generating over ₹3.2Cr+ in tracked pipeline value.</p>
+    `
+  }
+};
+
+function openCaseModal(caseId) {
+  const data = CASE_DATA[caseId];
+  if (!data) return;
+  document.getElementById('modalTag').textContent = data.tag;
+  document.getElementById('modalTitle').textContent = data.title;
+  document.getElementById('modalBody').innerHTML = data.body;
+  document.getElementById('caseModal').classList.add('active');
+}
+
+function openAuditModal() {
+  document.getElementById('auditModal').classList.add('active');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('active');
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('active');
+  }
+}
+
+// Update WhatsApp Audit text dynamically
+const brandInput = document.getElementById('auditBrand');
+const goalInput = document.getElementById('auditGoal');
+const sendAuditBtn = document.getElementById('sendAuditBtn');
+
+function updateAuditLink() {
+  const brand = encodeURIComponent(brandInput.value || 'my brand');
+  const goal = encodeURIComponent(goalInput.value || 'scale marketing & automation');
+  sendAuditBtn.href = `https://wa.me/916383267735?text=Hi%20Surya,%20I%20would%20like%20to%20request%20a%20Growth%20Audit%20for%20${brand}.%20Our%20goal:%20${goal}`;
+}
+brandInput.addEventListener('input', updateAuditLink);
+goalInput.addEventListener('input', updateAuditLink);
+
+/* -------------------------------------------------------------
+   Mobile Drawer Navigation Toggle
+------------------------------------------------------------- */
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobileDrawer');
+  drawer.classList.toggle('open');
+}
+
+/* -------------------------------------------------------------
+   8. Live Social Proof Toast Pill Notifications
+------------------------------------------------------------- */
+const TOAST_MESSAGES = [
+  '📈 Scaled Healthcare client: +185% organic inquiries',
+  '🚀 D2C Brand scaled to 4.8× ROAS via n8n Automation',
+  '⚙️ Rebuilt attribution pipeline: ₹3.2Cr+ tracked pipeline',
+  '⚡ Activated instant WhatsApp responder: 12s lead contact'
+];
+let toastIndex = 0;
+const toastEl = document.getElementById('liveToast');
+const toastMsg = document.getElementById('toastMessage');
+
+function showNextToast() {
+  toastIndex = (toastIndex + 1) % TOAST_MESSAGES.length;
+  toastMsg.textContent = TOAST_MESSAGES[toastIndex];
+  toastEl.classList.add('show');
+  setTimeout(() => {
+    toastEl.classList.remove('show');
+  }, 4500);
+}
+setTimeout(showNextToast, 3500);
+setInterval(showNextToast, 12000);
+
+/* -------------------------------------------------------------
+   9. GSAP ScrollTrigger & Reveal Animations
+------------------------------------------------------------- */
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate reveal elements
+gsap.utils.toArray('.rise').forEach((el) => {
+  gsap.fromTo(el, 
+    { y: 30, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    }
+  );
+});
+
+// Auto-hiding / blurred navigation on scroll
+let lastScroll = 0;
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > 150 && currentScroll > lastScroll) {
+    nav.style.transform = 'translateY(-100%)';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastScroll = currentScroll;
+});
+</script>
+</body>
+</html>
