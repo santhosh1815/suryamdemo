@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Surya S — Digital Marketing Strategist &amp; AI Automation Hub</title>
+<meta name="description" content="Surya S — Digital Marketing Strategist, SEO Consultant &amp; AI Automation Expert. Dedicated mobile experience.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+
+<style>
+:root{
+  --bg:#05080B;
+  --panel:#0B1219;
+  --panel-2:#0F1822;
+  --line:#1C2833;
+  --line-soft:#141D26;
+  --dim:#7C8B96;
+  --text:#E7EEF2;
+  --accent:#3DA9FC;
+  --accent-dim:rgba(61,169,252,.14);
+  --pos:#35D499;
+  --warn:#F2B155;
+
+  --display:"Space Grotesk", -apple-system, sans-serif;
+  --mono:"JetBrains Mono", monospace;
+  --body:"Inter", -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);font-family:var(--body);
+  font-size:15px;line-height:1.55;padding-bottom:88px;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+/* Top Scroll Progress Bar */
+#mob-scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg, var(--accent), var(--pos));
+  z-index:99999;transition:width 0.1s linear;
+}
+
+/* Stable Gentle Floating Animation */
+@keyframes mobFloat{
+  0%, 100%{transform:translateY(0px)}
+  50%{transform:translateY(-6px)}
+}
+.mob-float{
+  animation:mobFloat 6s ease-in-out infinite;
+  will-change:transform;
+}
+
+/* Role Fader */
+.mob-role-fader{
+  display:inline-block;color:var(--accent);font-weight:700;
+  transition:opacity 0.4s ease, transform 0.4s ease;
+}
+.mob-role-fader.fade-out{opacity:0;transform:translateY(6px)}
+.mob-role-fader.fade-in{opacity:1;transform:translateY(0)}
+
+/* Header */
+.mob-nav{
+  position:sticky;top:0;z-index:100;background:rgba(5,8,11,.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line-soft);padding:14px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mob-brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:16px}
+.mob-sq{
+  width:28px;height:28px;border-radius:8px;background:var(--accent-dim);
+  border:1px solid rgba(61,169,252,.4);color:var(--accent);display:grid;
+  place-items:center;font-family:var(--mono);font-size:11px;font-weight:700;
+}
+.status-pill{
+  display:inline-flex;align-items:center;gap:6px;background:rgba(53,212,153,.1);
+  border:1px solid rgba(53,212,153,.25);padding:5px 12px;border-radius:20px;
+  font-family:var(--mono);font-size:10.5px;color:var(--pos);font-weight:600;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--pos);box-shadow:0 0 8px var(--pos)}
+
+/* Container */
+.mob-wrap{padding:20px 18px}
+
+/* Hero Portrait Cover */
+.mob-hero-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;
+  overflow:hidden;margin-bottom:24px;box-shadow:0 12px 30px rgba(0,0,0,0.5);
+}
+.mob-hero-card img{
+  width:100%;height:auto;aspect-ratio:1/1.08;object-fit:cover;object-position:center 12%;display:block;
+}
+.mob-hero-info{
+  padding:18px;background:var(--panel-2);border-top:1px solid var(--line-soft);
+}
+.mob-hero-title{font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.02em}
+.mob-hero-title span{color:var(--accent)}
+.mob-hero-sub{color:var(--dim);font-size:13.5px;margin-top:6px;line-height:1.55}
+.mob-ventures{
+  display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--dim);
+}
+.mob-ventures b{color:var(--text)}
+
+/* Quick Actions */
+.mob-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.mob-btn{
+  padding:12px;border-radius:10px;font-family:var(--mono);font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;
+  gap:6px;border:1px solid var(--line);text-align:center;
+}
+.mob-btn-primary{background:var(--accent);border-color:var(--accent);color:#04111C}
+.mob-btn-ghost{background:var(--panel);color:var(--text)}
+
+/* Stats Bar */
+.mob-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:26px}
+.mob-stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.mob-stat .n{font-family:var(--display);font-size:26px;font-weight:700;color:var(--text)}
+.mob-stat .n::after{content:"+"}
+.mob-stat .k{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;margin-top:2px}
+
+/* Ticker */
+.mob-ticker-wrap{
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
+  overflow:hidden;padding-block:14px;background:var(--panel);margin-inline:-18px;margin-bottom:28px;
+}
+.mob-ticker{display:flex;gap:36px;width:max-content;animation:mobScroll 20s linear infinite}
+.mob-ticker span{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
+@keyframes mobScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Section Headings */
+.mob-sec{margin-bottom:34px}
+.mob-sec-head{margin-bottom:16px}
+.mob-sec-head .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.mob-sec-head h3{font-family:var(--display);font-size:22px;font-weight:700;margin-top:4px}
+
+/* About Card */
+.mob-about-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px;
+}
+.mob-about-card p{color:var(--dim);font-size:14px;line-height:1.65;margin-bottom:12px}
+.mob-about-card p:last-child{margin-bottom:0}
+.mob-about-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.mob-about-tag{
+  font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:20px;
+  border:1px solid var(--line);background:var(--panel-2);color:var(--dim);
+}
+
+/* Timeline */
+.mob-tl{border-left:1px solid var(--line);margin-left:14px;padding-left:20px}
+.mob-tl-item{position:relative;padding-bottom:26px}
+.mob-tl-item:last-child{padding-bottom:0}
+.mob-tl-item::before{
+  content:"";position:absolute;left:-25px;top:4px;width:8px;height:8px;
+  border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 6px var(--accent);
+}
+.mob-tl-year{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:700}
+.mob-tl-role{font-family:var(--display);font-size:17px;font-weight:700;margin-top:3px;color:#FFFFFF}
+.mob-tl-org{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:2px}
+.mob-tl-desc{color:var(--dim);font-size:13.5px;margin-top:6px;line-height:1.55}
+
+/* Services */
+.mob-svc-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:18px;margin-bottom:10px;
+}
+.mob-svc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.mob-svc-idx{font-family:var(--mono);font-size:10.5px;color:var(--accent);font-weight:700}
+.mob-svc-card h4{font-family:var(--display);font-size:16px;font-weight:700}
+.mob-svc-card p{color:var(--dim);font-size:13px;line-height:1.55;margin-top:4px}
+
+/* Work Case Cards */
+.mob-wcard{
+  background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  padding:20px;margin-bottom:12px;text-align:left;width:100%;
+}
+.mob-wcard .ind{font-family:var(--mono);font-size:10.5px;color:var(--dim);text-transform:uppercase;font-weight:600}
+.mob-wcard h4{font-family:var(--display);font-size:18px;font-weight:700;margin-top:6px;color:#FFFFFF;letter-spacing:-.015em}
+.mob-wcard .res{margin-top:8px;font-family:var(--mono);font-size:12px;color:var(--pos);font-weight:600}
+.mob-wcard .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.mob-wcard .tags span{
+  font-family:var(--mono);font-size:10px;color:var(--text);border:1px solid var(--line);
+  border-radius:20px;padding:3px 9px;background:var(--panel-2);
+}
+
+/* Skills */
+.mob-skill-row{margin-bottom:14px}
+.mob-skill-head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;margin-bottom:6px}
+.mob-skill-bar{height:6px;background:var(--line-soft);border-radius:4px;overflow:hidden}
+.mob-skill-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--pos));border-radius:4px}
+
+/* Contact Links */
+.mob-contact-row{
+  display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);
+  border-radius:12px;padding:14px 16px;background:var(--panel);margin-bottom:10px;
+}
+.mob-contact-row .k{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase}
+.mob-contact-row .v{font-family:var(--display);font-weight:600;font-size:14.5px;margin-top:2px}
+.mob-contact-row .go{color:var(--accent);font-family:var(--mono)}
+
+/* Fixed Bottom App Bar */
+.mob-bottom-bar{
+  position:fixed;bottom:0;left:0;width:100%;
+  background:rgba(5,8,11,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:10px;z-index:200;
+}
+.mob-bar-btn{
+  flex:1;padding:12px;border-radius:10px;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.mob-bar-primary{background:var(--accent);color:#04111C}
+.mob-bar-call{background:var(--panel);border:1px solid var(--line);color:var(--text)}
+
+/* Modal */
+.mob-modal-overlay{
+  position:fixed;inset:0;z-index:999999;background:rgba(2,4,6,.82);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease;
+}
+.mob-modal-overlay.open{opacity:1;visibility:visible;pointer-events:auto}
+.mob-modal{
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;width:100%;
+  max-height:84vh;overflow-y:auto;padding:22px;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.8);
+}
+.mob-modal-close{
+  position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel-2);color:var(--dim);display:grid;place-items:center;
+}
+</style>
+</head>
+<body>
+
+<!-- Top Scroll Progress Bar -->
+<div id="mob-scroll-progress"></div>
+
+<!-- Header -->
+<header class="mob-nav">
+  <div class="mob-brand">
+    <div class="mob-sq">SS</div>
+    <span>Surya S</span>
+  </div>
+  <div class="status-pill"><span class="dot"></span> Available 2026</div>
+</header>
+
+<main class="mob-wrap">
+  <!-- Hero Card with Portrait (Gentle Floating Card) -->
+  <div class="mob-hero-card mob-float">
+    <img src="surya_suit_portrait.jpg" alt="Surya S — Digital Marketing Strategist">
+    <div class="mob-hero-info">
+      <h1 class="mob-hero-title">Surya S — <br><span class="mob-role-fader" id="mobRoleSwitcher">Digital Marketing Strategist</span></h1>
+      <p class="mob-hero-sub">Helping brands scale with data-driven strategy, paid media, SEO, and AI automation.</p>
+      <div class="mob-ventures">Founder of <b>AKOON IGNITE</b> &amp; <b>GetWy</b> · Bangalore, IN</div>
+      
+      <div class="mob-actions">
+        <a href="https://wa.me/916383267735" class="mob-btn mob-btn-primary" target="_blank" rel="noopener">
+          <i data-lucide="message-square" style="width:13px;height:13px"></i> WhatsApp
+        </a>
+        <a href="#work" class="mob-btn mob-btn-ghost">
+          <i data-lucide="folder-kanban" style="width:13px;height:13px"></i> Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Grid -->
+  <div class="mob-stats-grid">
+    <div class="mob-stat"><div class="n">4</div><div class="k">Years Exp.</div></div>
+    <div class="mob-stat"><div class="n">14</div><div class="k">Projects</div></div>
+    <div class="mob-stat"><div class="n">12</div><div class="k">Brands</div></div>
+    <div class="mob-stat"><div class="n">60</div><div class="k">Campaigns</div></div>
+  </div>
+
+  <!-- Marquee Ticker -->
+  <div class="mob-ticker-wrap">
+    <div class="mob-ticker">
+      <span>AKOON IGNITE</span><span>GetWy</span><span>Vaishno Group</span><span>House of Mango Tree</span>
+      <span>KARE</span><span>ILIFE</span><span>WordFunds</span><span>Superryze</span>
+      <span>Abinam Healthcare</span><span>Annapoorna APT</span><span>Kavya Bridals</span><span>Adveratech Solutions</span>
+      <!-- Loop -->
+      <span>AKOON IGNITE</span><span>GetWy</span><span>Vaishno Group</span><span>House of Mango Tree</span>
+      <span>KARE</span><span>ILIFE</span><span>WordFunds</span><span>Superryze</span>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="mob-sec" id="about">
+    <div class="mob-sec-head">
+      <span class="tag">About</span>
+      <h3>Marketing Meets Machine Intelligence</h3>
+    </div>
+    <div class="mob-about-card">
+      <div style="width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-bottom:16px;background:var(--panel-2)">
+        <img src="surya_illustration.jpg" alt="Surya S — Illustration" style="width:100%;height:auto;aspect-ratio:1/1.05;object-fit:cover;object-position:center 22%;display:block">
+      </div>
+      <p>Hey, I'm Surya — based out of Bangalore. For the last 4 years I've helped founders scale across healthcare, real estate, retail, finance, and D2C.</p>
+      <p>I build systems that keep compounding after I log off: clean funnels, sharp positioning, and AI workflows that stop wasting your team's time.</p>
+      <div class="mob-about-tags">
+        <span class="mob-about-tag">Growth focused</span>
+        <span class="mob-about-tag">ROI focused</span>
+        <span class="mob-about-tag">Automation first</span>
+        <span class="mob-about-tag">Growth mindset</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="mob-sec">
+    <div class="mob-sec-head">
+      <span class="tag">Timeline</span>
+      <h3>4 Years of Momentum</h3>
+    </div>
+    <div class="mob-tl">
+      <div class="mob-tl-item">
+        <div class="mob-tl-year">2025 — Now</div>
+        <div class="mob-tl-role">Founder</div>
+        <div class="mob-tl-org">AKOON IGNITE &amp; GetWy</div>
+        <div class="mob-tl-desc">Scaling brands with AI-first marketing &amp; automated lead funnels.</div>
+      </div>
+      <div class="mob-tl-item">
+        <div class="mob-tl-year">2024</div>
+        <div class="mob-tl-role">AI Automation Expert</div>
+        <div class="mob-tl-org">Independent</div>
+        <div class="mob-tl-desc">Workflows via n8n, Zapier, CRM pipelines and AI agents.</div>
+      </div>
+      <div class="mob-tl-item">
+        <div class="mob-tl-year">2023</div>
+        <div class="mob-tl-role">Business Consultant</div>
+        <div class="mob-tl-org">Multi-industry</div>
+        <div class="mob-tl-desc">Advising founders on revenue planning and GTM strategies.</div>
+      </div>
+      <div class="mob-tl-item">
+        <div class="mob-tl-year">2022</div>
+        <div class="mob-tl-role">Performance Marketing</div>
+        <div class="mob-tl-org">Agency &amp; Freelance</div>
+        <div class="mob-tl-desc">High-ROAS Google, Meta and Shopping ad campaigns.</div>
+      </div>
+      <div class="mob-tl-item">
+        <div class="mob-tl-year">2021</div>
+        <div class="mob-tl-role">SEO Specialist &amp; Web</div>
+        <div class="mob-tl-org">Client work</div>
+        <div class="mob-tl-desc">High-converting websites and technical SEO architecture.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="mob-sec" id="services">
+    <div class="mob-sec-head">
+      <span class="tag">Services</span>
+      <h3>Core Specializations</h3>
+    </div>
+    <div class="mob-svc-card">
+      <div class="mob-svc-top"><div class="mob-svc-idx">01</div><h4>SEO Consulting</h4></div>
+      <p>Full-funnel organic strategy, technical audits, and content systems.</p>
+    </div>
+    <div class="mob-svc-card">
+      <div class="mob-svc-top"><div class="mob-svc-idx">02</div><h4>Performance Marketing</h4></div>
+      <p>Google &amp; Meta ads engineered for profitable ROAS and low CPL.</p>
+    </div>
+    <div class="mob-svc-card">
+      <div class="mob-svc-top"><div class="mob-svc-idx">03</div><h4>AI Automation</h4></div>
+      <p>n8n, Zapier, CRM integrations, and automated lead nurturing.</p>
+    </div>
+    <div class="mob-svc-card">
+      <div class="mob-svc-top"><div class="mob-svc-idx">04</div><h4>Website Development</h4></div>
+      <p>High-converting WordPress, WooCommerce, and landing pages.</p>
+    </div>
+  </section>
+
+  <!-- Featured Work -->
+  <section class="mob-sec" id="work">
+    <div class="mob-sec-head">
+      <span class="tag">Featured Work</span>
+      <h3>Case Studies That Compound</h3>
+    </div>
+    <div id="mobWorkList"></div>
+  </section>
+
+  <!-- Skills -->
+  <section class="mob-sec" id="skills">
+    <div class="mob-sec-head">
+      <span class="tag">Skills</span>
+      <h3>Measurable Mastery</h3>
+    </div>
+    <div id="mobSkillList"></div>
+  </section>
+
+  <!-- Contact -->
+  <section class="mob-sec" id="contact">
+    <div class="mob-sec-head">
+      <span class="tag">Contact</span>
+      <h3>Let's Build Together</h3>
+    </div>
+    <a class="mob-contact-row" href="tel:+916383267735">
+      <div><div class="k">Call</div><div class="v">+91 63832 67735</div></div>
+      <span class="go">→</span>
+    </a>
+    <a class="mob-contact-row" href="mailto:suryadigitalapex@gmail.com">
+      <div><div class="k">Email</div><div class="v">suryadigitalapex@gmail.com</div></div>
+      <span class="go">→</span>
+    </a>
+    <a class="mob-contact-row" href="https://wa.me/916383267735" target="_blank" rel="noopener">
+      <div><div class="k">WhatsApp</div><div class="v">Message directly</div></div>
+      <span class="go">→</span>
+    </a>
+    <a class="mob-contact-row" href="https://linkedin.com/in/surya-somasundaram21" target="_blank" rel="noopener">
+      <div><div class="k">LinkedIn</div><div class="v">surya-somasundaram21</div></div>
+      <span class="go">→</span>
+    </a>
+  </section>
+</main>
+
+<!-- Fixed Mobile App Bottom Bar -->
+<div class="mob-bottom-bar">
+  <a href="tel:+916383267735" class="mob-bar-btn mob-bar-call">
+    <i data-lucide="phone" style="width:14px;height:14px"></i> Call
+  </a>
+  <a href="https://wa.me/916383267735" target="_blank" rel="noopener" class="mob-bar-btn mob-bar-primary">
+    <i data-lucide="message-square" style="width:14px;height:14px"></i> WhatsApp
+  </a>
+</div>
+
+<!-- Modal Popup -->
+<div class="mob-modal-overlay" id="mobModalOverlay">
+  <div class="mob-modal" id="mobModalBox">
+    <button class="mob-modal-close" onclick="closeMobModal()" aria-label="Close">✕</button>
+    <div id="mobModalContent"></div>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+const CASES = [
+  {client:"Vaishno Group", industry:"Real Estate", tags:["Digital Strategy","Lead Gen","Campaigns"],
+   challenge:"Fragmented digital presence and inconsistent lead flow.",
+   solution:"Built a full-funnel lead generation engine with paid + organic.",
+   result:"3.2× qualified leads within 90 days."},
+  {client:"Annapoorna APT", industry:"Finance", tags:["Website Strategy","Leads"],
+   challenge:"Low online trust and weak lead capture.",
+   solution:"Rebuilt website with conversion-first architecture.",
+   result:"2.4× conversion rate uplift."},
+  {client:"Kavya Bridals", industry:"Fashion", tags:["Brand","Social","SEO"],
+   challenge:"Undifferentiated brand in a saturated market.",
+   solution:"Repositioned brand and launched social + SEO play.",
+   result:"58% growth in organic footfall."},
+  {client:"House of Mango Tree", industry:"Luxury Fashion", tags:["WooCommerce","SEO"],
+   challenge:"Slow store, poor discoverability.",
+   solution:"Rebuilt on WooCommerce with speed + SEO overhaul.",
+   result:"4× organic revenue in 6 months."},
+  {client:"KARE Prosthetics", industry:"Healthcare", tags:["Meta Ads","Leads"],
+   challenge:"Niche audience, high CPL.",
+   solution:"Precision-targeted Meta campaigns with a full-funnel lead system.",
+   result:"≈ ₹5 Cr revenue generated."},
+  {client:"AKOON IGNITE", industry:"Marketing Studio", tags:["Brand","Growth"],
+   challenge:"Launching a new-age marketing studio.",
+   solution:"Full brand system, positioning and inbound engine.",
+   result:"Booked pipeline within first quarter."},
+  {client:"GetWy", industry:"Automation SaaS", tags:["Automation","AI","GTM"],
+   challenge:"Bringing an AI automation product to market.",
+   solution:"GTM strategy, website and lead funnels.",
+   result:"Onboarded early-access clients across 3 industries."}
+];
+
+const SKILLS = [
+  {name:"SEO", pct:95},
+  {name:"Meta Ads", pct:92},
+  {name:"Google Ads", pct:90},
+  {name:"WordPress", pct:88},
+  {name:"AI Automation", pct:93},
+  {name:"Business Strategy", pct:90},
+  {name:"Analytics", pct:87}
+];
+
+// Render Work
+const workList = document.getElementById('mobWorkList');
+CASES.forEach((c, i) => {
+  const card = document.createElement('button');
+  card.className = 'mob-wcard';
+  card.innerHTML = `
+    <div class="ind">${c.industry}</div>
+    <h4>${c.client}</h4>
+    <div class="res">${c.result}</div>
+    <div class="tags">${c.tags.map(t => `<span>${t}</span>`).join('')}</div>
+  `;
+  card.addEventListener('click', () => openMobModal(i));
+  workList.appendChild(card);
+});
+
+// Render Skills
+const skillList = document.getElementById('mobSkillList');
+SKILLS.forEach(s => {
+  const div = document.createElement('div');
+  div.className = 'mob-skill-row';
+  div.innerHTML = `
+    <div class="mob-skill-head"><span>${s.name}</span><span style="color:var(--dim)">${s.pct}%</span></div>
+    <div class="mob-skill-bar"><div class="mob-skill-fill" style="width:${s.pct}%"></div></div>
+  `;
+  skillList.appendChild(div);
+});
+
+// Modal Logic
+const overlay = document.getElementById('mobModalOverlay');
+const content = document.getElementById('mobModalContent');
+
+function openMobModal(i){
+  const c = CASES[i];
+  content.innerHTML = `
+    <div style="font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase">${c.industry}</div>
+    <h3 style="font-family:var(--display);font-size:22px;font-weight:700;margin-top:6px;padding-right:30px">${c.client}</h3>
+    <div style="margin-top:14px"><div style="font-family:var(--mono);font-size:10.5px;color:var(--dim);text-transform:uppercase">Challenge</div><div style="margin-top:4px;font-size:14px">${c.challenge}</div></div>
+    <div style="margin-top:14px"><div style="font-family:var(--mono);font-size:10.5px;color:var(--dim);text-transform:uppercase">Solution</div><div style="margin-top:4px;font-size:14px">${c.solution}</div></div>
+    <div style="margin-top:16px;background:var(--accent-dim);border:1px solid rgba(61,169,252,.3);border-radius:8px;padding:12px;font-family:var(--mono);font-size:13px;color:var(--pos);font-weight:600">${c.result}</div>
+  `;
+  overlay.classList.add('open');
+}
+// Mobile Scroll Progress
+const mobScroll = document.getElementById('mob-scroll-progress');
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  if(mobScroll) mobScroll.style.width = scrolled + '%';
+}, { passive: true });
+
+// Mobile Role Fader Switcher
+const mobRoles = [
+  "Digital Marketing Strategist",
+  "AI Automation Architect",
+  "Full-Stack SEO Consultant",
+  "Performance Acquisition Lead"
+];
+let mobRoleIdx = 0;
+const mobRoleEl = document.getElementById('mobRoleSwitcher');
+if(mobRoleEl){
+  setInterval(() => {
+    mobRoleEl.classList.add('fade-out');
+    setTimeout(() => {
+      mobRoleIdx = (mobRoleIdx + 1) % mobRoles.length;
+      mobRoleEl.textContent = mobRoles[mobRoleIdx];
+      mobRoleEl.classList.remove('fade-out');
+      mobRoleEl.classList.add('fade-in');
+      setTimeout(() => mobRoleEl.classList.remove('fade-in'), 400);
+    }, 400);
+  }, 3200);
+}
+</script>
+</body>
+</html>
