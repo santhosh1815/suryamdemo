@@ -6,10 +6,11 @@
 <title>Surya S — Digital Marketing Strategist &amp; AI Automation Expert</title>
 <meta name="description" content="Surya S — Digital Marketing Strategist, SEO Consultant, AI Automation Expert. Founder of AKOON IGNITE &amp; GetWy.">
 
-<!-- Modern Google Fonts System -->
+<!-- Calligraphy & Editorial Typography System -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@500;600;700&family=Fira+Code:wght@400;500;600;700&family=Fondamento:ital@0;1&family=Italianno&family=Marck+Script&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
 
 <style>
@@ -26,28 +27,38 @@
   --pos:#35D499;
   --warn:#F2B155;
 
-  --display:"Space Grotesk", "Outfit", Arial, sans-serif;
-  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
-  --body:"Inter", system-ui, -apple-system, sans-serif;
+  /* CALLIGRAPHY TYPOGRAPHY SYSTEM */
+  --font-calligraphy: "Fondamento", "Italianno", "Alex Brush", "Playfair Display", "Cormorant Garamond", "Apple Chancery", "Zapf Chancery", cursive, serif;
+  --display: "Fondamento", "Italianno", "Playfair Display", "Cormorant Garamond", "Apple Chancery", cursive, serif;
+  --body: "Fondamento", "Cormorant Garamond", "Plus Jakarta Sans", cursive, sans-serif;
+  --mono: "Fira Code", "JetBrains Mono", ui-monospace, monospace;
 
   --gut:clamp(20px, 4vw, 64px);
   --pad:clamp(64px, 8vw, 110px);
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*, *::before, *::after{
+  box-sizing:border-box;margin:0;padding:0;
+  font-family:var(--font-calligraphy);
+}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);color:var(--text);font-family:var(--body);
-  line-height:1.65;overflow-x:hidden;position:relative;
+  background:var(--bg);color:var(--text);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.68;overflow-x:hidden;position:relative;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  letter-spacing:0.01em;
 }
 body.locked{overflow:hidden}
 a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
+button, input, textarea, select{font-family:var(--font-calligraphy);cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 
 /* Full Screen Container */
 .wrap{max-width:1440px;width:100%;margin:0 auto;padding-inline:var(--gut)}
-.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.disp{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.1}
+.mono{font-family:var(--mono) !important;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.disp{font-family:var(--display);font-weight:700;letter-spacing:0.02em;line-height:1.15}
 
 /* Ambient Canvas Particle Grid */
 #bg-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.35}
