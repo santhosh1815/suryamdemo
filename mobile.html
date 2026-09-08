@@ -6,9 +6,11 @@
 <title>Surya S — Digital Marketing Strategist &amp; AI Automation Hub</title>
 <meta name="description" content="Surya S — Digital Marketing Strategist, SEO Consultant &amp; AI Automation Expert. Dedicated mobile experience.">
 
+<!-- Calligraphy & Editorial Typography System -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dancing+Script:wght@500;600;700&family=Fira+Code:wght@400;500;600;700&family=Fondamento:ital@0;1&family=Italianno&family=Marck+Script&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
 <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
 
 <style>
@@ -25,18 +27,29 @@
   --pos:#35D499;
   --warn:#F2B155;
 
-  --display:"Space Grotesk", -apple-system, sans-serif;
-  --mono:"JetBrains Mono", monospace;
-  --body:"Inter", -apple-system, sans-serif;
+  /* CALLIGRAPHY TYPOGRAPHY SYSTEM */
+  --font-calligraphy: "Fondamento", "Italianno", "Alex Brush", "Playfair Display", "Cormorant Garamond", "Apple Chancery", "Zapf Chancery", cursive, serif;
+  --display: "Fondamento", "Italianno", "Playfair Display", "Cormorant Garamond", "Apple Chancery", cursive, serif;
+  --body: "Fondamento", "Cormorant Garamond", "Plus Jakarta Sans", cursive, sans-serif;
+  --mono: "Fira Code", "JetBrains Mono", ui-monospace, monospace;
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+*, *::before, *::after{
+  box-sizing:border-box;margin:0;padding:0;
+  -webkit-tap-highlight-color:transparent;
+  font-family:var(--font-calligraphy);
+}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);color:var(--text);font-family:var(--body);
-  font-size:15px;line-height:1.55;padding-bottom:88px;overflow-x:hidden;
+  background:var(--bg);color:var(--text);
+  font-family:var(--body);
+  font-size:16px;line-height:1.6;padding-bottom:88px;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  letter-spacing:0.01em;
 }
 a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
+button, input, textarea, select{font-family:var(--font-calligraphy);cursor:pointer}
+.mono{font-family:var(--mono) !important}
 
 /* Top Scroll Progress Bar */
 #mob-scroll-progress{
